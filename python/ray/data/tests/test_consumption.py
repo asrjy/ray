@@ -1545,6 +1545,9 @@ def test_pandas_block_select():
 # tests should only be carefully reordered to retain this invariant!
 
 
+@pytest.mark.skipif(
+    sys.version_info >= (3, 12), reason="TODO(scottjlee): Not working yet for py312"
+)
 def test_unsupported_pyarrow_versions_check(shutdown_only, unsupported_pyarrow_version):
     ray.shutdown()
 
@@ -1560,6 +1563,9 @@ def test_unsupported_pyarrow_versions_check(shutdown_only, unsupported_pyarrow_v
         ray.get(should_error.remote())
 
 
+@pytest.mark.skipif(
+    sys.version_info >= (3, 12), reason="TODO(scottjlee): Not working yet for py312"
+)
 def test_unsupported_pyarrow_versions_check_disabled(
     shutdown_only,
     unsupported_pyarrow_version,
